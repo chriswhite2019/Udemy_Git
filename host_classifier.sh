@@ -5,7 +5,7 @@ if [ "$#" -lt 1 ]; then
 fi
 
 for each in $*; do
-        echo ""
+        echo "================"
         echo File = $each
 
         os_windows_count="0"
@@ -13,7 +13,7 @@ for each in $*; do
         os_other_count="0"
         env_production_count="0"
         env_development_count="0"
-        env_other_count="0"
+        env_other_count="0" 
 
 while read line; do
         env=`echo "$line" | cut -c6`
@@ -22,14 +22,14 @@ while read line; do
 
 if [ "$os" == 'w' ]; then
         ((os_windows_count++))
-elif [ "$os" == 'l' ]; then
-        ((os_linux_count++))
-else
-        ((os_other_count++))
+elif [ "$os" == 'l' ]; then 
+        ((os_linux_count++)) 
+else 
+        ((os_other_count++)) 
 fi
 
-if [ "$env" == 'p' ]; then
-        ((env_production_count++))
+if [ "$env" == 'p' ]; then 
+        ((env_production_count++)) 
 elif [ "$env" == 'd' ]; then
         ((env_development_count++))
 else
@@ -38,13 +38,11 @@ fi
 
 done < $each
 
-        echo "OS Windows = " $os_windows_count
-        echo "OS Linux   = " $os_linux_count
-        echo "OS Other   = " $os_other_count
-        echo "Environment Production  = " $env_production_count
-        echo "Environment Development = " $env_development_count
-        echo "Environment Other       = " $env_other_count
-        echo ""
+        echo "OS Windows =" $os_windows_count
+        echo "OS Linux   =" $os_linux_count
+        echo "OS Other   =" $os_other_count
+        echo "Environment Production  =" $env_production_count
+        echo "Environment Development =" $env_development_count
+        echo "Environment Other       =" $env_other_count
 
 done
-
